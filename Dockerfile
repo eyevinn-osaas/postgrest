@@ -1,8 +1,8 @@
-FROM postgrest/postgrest
+FROM ubuntu:latest
 
-USER 0
+COPY --from=postgrest/postgrest /bin/postgrest /bin
+
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-USER ubuntu
 
 ENTRYPOINT ["docker-entrypoint.sh"]
